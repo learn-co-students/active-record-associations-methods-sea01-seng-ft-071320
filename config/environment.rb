@@ -9,7 +9,8 @@ ENV["PLAYLISTER_ENV"] ||= "development"
 
 ActiveRecord::Base.establish_connection(ENV["PLAYLISTER_ENV"].to_sym)
 
-ActiveRecord::Base.logger = nil
+# ActiveRecord::Base.logger = nil
+ActiveRecord::Base.logger = Logger.new(STDOUT)
 
 if ENV["PLAYLISTER_ENV"] == "test"
   ActiveRecord::Migration.verbose = false
